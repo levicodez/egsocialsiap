@@ -1,645 +1,83 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Tela de Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
+    .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
 
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br" translate="no">
-<head id="Head1"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><title>
-	Secretaria de Educação do Estado de Goiás
-</title><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style type="text/css">
-        .desktop {
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            width: 100%;
-            border: none;
+    button {
+      background: #6200ea;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 4px;
+    }
 
-        }
+    button:hover {
+      background: #4500a8;
+    }
 
-        :root {
-            --branco: rgba(255, 255, 255, 1);
-            --azul: rgba(40, 78, 135, 1);
-            --azul-1: rgba(80, 70, 175, 1);
-              background-image: url("img/background.png");
-              border: none;
-        }
+    .mensagem-erro {
+      margin-top: 15px;
+      color: #fff;
+      background: #e53935;
+      padding: 10px;
+      border-radius: 4px;
+      display: none; /* escondido no início */
+      animation: fadeIn 0.5s ease-in-out;
+    }
 
-        .desktop .overlap-group-wrapper {
-            background-color: #ffffff;
-            width: 1920px;
-            height: 1080px;
-            border: none;
-        }
-
-        .desktop .overlap-group {
-            height: 1080px;
-            background-image: url("img/background.png");
-            background-size: 105% 105%;
-            border: none;
-        }
-
-        .desktop .frame {
-            display: flex;
-            width: 1100px;
-            align-items: center;
-            position: relative;
-            top: 50px;
-            left: 380px;
-            border-radius: 64px;
-            overflow: hidden;
-            box-shadow: 0px 16px 24px #353f4b52, 0px 16px 24px #00000052;
-        }
-
-        .desktop .frame-wrapper {
-            display: flex;
-            flex-direction: column;
-            width: 600px;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 24px 0px;
-            position: relative;
-            align-self: stretch;
-            background: linear-gradient(180deg, rgb(24.3, 62.18, 119) 0%, rgb(53.83, 100.3, 170) 69.27%);
-        }
-
-        .desktop .div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 64px 80px;
-            position: relative;
-            flex: 1;
-            align-self: stretch;
-            width: 100%;
-            flex-grow: 1;
-        }
-
-        .desktop .frame-2 {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            flex: 1;
-            align-self: stretch;
-            width: 100%;
-            flex-grow: 1;
-        }
-
-        .desktop .siap {
-            position: relative;
-            align-self: stretch;
-            font-family: "Bw Mitga-Black", Helvetica;
-            font-weight: 900;
-            color: var(--branco);
-            font-size: 152px;
-            letter-spacing: 0;
-            line-height: normal;
-        }
-
-        .desktop .text-wrapper {
-            position: relative;
-            align-self: stretch;
-            font-family: "Bw Mitga-Regular", Helvetica;
-            font-weight: 400;
-            color: var(--branco);
-            font-size: 42.8px;
-            letter-spacing: 0;
-            line-height: normal;
-        }
-
-        .desktop .frame-3 {
-            display: inline-flex;
-            height: 83.5px;
-            align-items: center;
-            gap: 32px;
-            padding: 12.46px 0px;
-            position: relative;
-        }
-
-        .desktop .mask-group {
-            position: relative;
-            width: 200px;
-            height: 60px;
-            margin-top: -14.96px;
-            margin-bottom: -14.96px;
-            transform: translateX(-50%);
-
-        }
-
-        .desktop .logo {
-            position: relative;
-            width: 75.46px;
-            height: 46.11px;
-        }
-
-        .desktop .frame-4 {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1px;
-            padding: 2px 0px;
-            position: relative;
-            flex: 1;
-            flex-grow: 1;
-            background-color: var(--branco);
-        }
-
-        .desktop .div-wrapper {
-            display: flex;
-            align-items: flex-start;
-            position: relative;
-            align-self: stretch;
-            width: 100%;
-            flex: 0 0 auto;
-        }
-
-        .desktop .frame-5 {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 0px 272px 0px 0px;
-            position: relative;
-            flex: 1;
-            flex-grow: 1;
-        }
-
-        .desktop .rea-de-acesso-wrapper {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 16px 17px 16px 24px;
-            position: relative;
-            flex: 0 0 auto;
-            margin-right: -65px;
-            background-color: var(--azul);
-            border-radius: 0px 32px 32px 0px;
-            transform: translateY(15%);
-        }
-
-        .desktop .rea-de-acesso {
-            position: relative;
-            width: fit-content;
-            margin-top: -1px;
-            font-family: "Poppins-Regular", Helvetica;
-            font-weight: 400;
-            color: var(--branco);
-            font-size: 23.3px;
-            text-align: center;
-            letter-spacing: 0;
-            line-height: normal;
-        }
-
-        .desktop .ativo {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            gap: 8.527px;
-            align-self: stretch;
-            width: 81.003px;
-            height: 121.061px;
-           transform: translateX(250%) translateY(15%);
-        }
-
-        .desktop .frame-6 {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 40px;
-            padding: 0px 40px;
-            position: relative;
-            align-self: stretch;
-            width: 100%;
-            flex: 0 0 auto;
-        }
-
-        .desktop .frame-7 {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 24px;
-            position: relative;
-            align-self: stretch;
-            width: 100%;
-            flex: 0 0 auto;
-        }
-
-        .desktop .frame-8 {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 16px;
-            position: relative;
-            align-self: stretch;
-            width: 100%;
-            flex: 0 0 auto;
-           transform: translateX(8%) translateY(15%);
-
-        }
-        .desktop  .abaixo {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 16px;
-            position: relative;
-            align-self: stretch;
-            width: 100%;
-            flex: 0 0 auto;
-           transform: translateX(8%) translateY(120%);
-
-        }
-
-        .desktop .frame-8  .input:focus {
-                outline: none;
-            }
-
-        .desktop .frame-8 .input  {
-            font-size: 16px;
-            padding: 10px 10px 10px 5px;
-            display: block;
-            width: 249px;
-            border: none;
-            border-bottom: 1px solid #515151;
-            background: transparent;
-
-        }
-
-        .desktop .text-wrapper-2 {
-            position: relative;
-            align-self: stretch;
-            margin-top: -1px;
-            font-family: "Poppins-Regular", Helvetica;
-            font-weight: 400;
-            color: var(--azul-1);
-            font-size: 16px;
-            letter-spacing: 0;
-            line-height: normal;
-            transform: translateY(96%);
-        }
-        .desktop .text-wrapper-2 .abaixo {
-            position: relative;
-            align-self: stretch;
-            margin-top: -1px;
-            font-family: "Poppins-Regular", Helvetica;
-            font-weight: 400;
-            color: var(--azul-1);
-            font-size: 16px;
-            letter-spacing: 0;
-            line-height: normal;
-            transform: translateY(155%);
-        }
-
-        .desktop .line {
-            position: relative;
-            align-self: stretch;
-            width: 100%;
-            height: 2px;
-        }
-
-        .desktop .frame-9 {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
-            position: relative;
-            align-self: stretch;
-            width: 100%;
-            flex: 0 0 auto;
-        }
-
-        .desktop .esqueceu-a-senha {
-            position: relative;
-            width: fit-content;
-            font-family: "Poppins-Regular", Helvetica;
-            font-weight: 400;
-            color: var(--azul-1);
-            font-size: 12px;
-            text-align: center;
-            letter-spacing: 0;
-            line-height: normal;
-            transform: translateX(48%) translateY(-500%)
-
-        }
-
-        .desktop .span {
-            font-family: "Poppins-Regular", Helvetica;
-            font-weight: 400;
-            color: #5046af;
-            font-size: 12px;
-            letter-spacing: 0;
-        }
-
-        .desktop .text-wrapper-3 {
-            text-decoration: underline;
-        }
-
-        .desktop .o-que-recaptcha-como-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            position: relative;
-            align-self: stretch;
-            width: 100%;
-            flex: 0 0 auto;
-            transform: translateX(-11%) translateY(250%);
-
-        }
-
-        .desktop o-que-recaptcha-como-wrapper .input {
-            font-size: 16px;
-            padding: 10px 10px 10px 5px;
-            display: block;
-            width: 249px;
-            border: none;
-            border-bottom: 1px solid #515151;
-            background: transparent;
-        }
-
-        .desktop .o-que-recaptcha-como {
-            position: relative;
-            width: 353px;
-            height: 105px;
-        }
-
-        .desktop .frame-10 {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 8px 32px;
-            position: relative;
-            flex: 0 0 auto;
-        }
-        .desktop .frame-10 .Entrar {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 10px 45px;
-            position: relative;
-            flex: 0 0 auto;
-            background-color: var(--azul);
-            border-radius: 32px;
-            transform: translateX(-150%) translateY(250%);
-            color: white;
-            font-family: "Poppins-Regular", Helvetica;
-
-        }
-        
-
-        #lblCaptcha {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 8px 32px;
-            position: relative;
-           transform: translateX(-25%) translateY(-500%);
-           font-size: 23px;
-        }
-
-        #lblMensagem {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 8px 32px;
-            position: relative;
-            transform: translateX(-14%) translateY(-100%);
-        }
-
-        .desktop .text-wrapper-4 {
-            position: relative;
-            width: fit-content;
-            margin-top: -1px;
-            font-family: "Poppins-Regular", Helvetica;
-            font-weight: 400;
-            color: var(--branco);
-            font-size: 22px;
-            letter-spacing: 0;
-            line-height: normal;
-        }
-
-        .desktop .frame-11 {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0px;
-            position: relative;
-            align-self: stretch;
-            width: 100%;
-            flex: 0 0 auto;
-            transform: translateX(-7%) translateY(-30%);
-        }
-
-        .desktop .para-d-vidas-visite {
-            position: relative;
-            align-self: stretch;
-            margin-top: -1px;
-            font-family: "Poppins-Regular", Helvetica;
-            font-weight: 400;
-            color: var(--azul-1);
-            font-size: 12px;
-            text-align: center;
-            letter-spacing: 0;
-            line-height: normal;
-        }
-
-        .desktop .text-wrapper-5 {
-            font-family: "Poppins-Medium", Helvetica;
-            font-weight: 500;
-        }
-
-        .desktop .text-wrapper-6 {
-            text-decoration: underline;
-            font-family: "Poppins-Medium", Helvetica;
-            font-weight: 500;
-        }
-
-        .desktop .se-inscreva-no-curso {
-            position: relative;
-            align-self: stretch;
-            font-family: "Poppins-Medium", Helvetica;
-            font-weight: 400;
-            color: var(--azul-1);
-            font-size: 12px;
-            text-align: center;
-            letter-spacing: 0;
-            line-height: normal;
-        }
-
-        .desktop .text-wrapper-7 {
-            font-weight: 500;
-            text-decoration: underline;
-        }
-
-        .desktop .text-wrapper-8 {
-            font-family: "Poppins-Regular", Helvetica;
-        }
-
-        @media only screen and (max-width: 1488px) {
-            .desktop .frame {
-                display: flex;
-                width: 1100px;
-                align-items: center;
-                position: relative;
-                top: 50px;
-                left: 180px;
-                border-radius: 64px;
-                overflow: hidden;
-                box-shadow: 0px 16px 24px #353f4b52, 0px 16px 24px #00000052;
-            }
-        }
-        @media only screen and (max-width: 1288px) {
-            .desktop .frame {
-                display: flex;
-                width: 1100px;
-                align-items: center;
-                position: relative;
-                top: 50px;
-                left: 75px;
-                border-radius: 64px;
-                overflow: hidden;
-                box-shadow: 0px 16px 24px #353f4b52, 0px 16px 24px #00000052;
-            }
-        }
-
-    </style>
-
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-    <form method="post" action="./login.aspx?ReturnUrl=%2f" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'btnLogon')" id="form1" autocomplete="off">
-<div class="aspNetHidden">
-<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
-<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
-<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
-<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJMTQwMTg4MTAxD2QWAgIED2QWAgINDw8WAh4EVGV4dAUJdWdldWp2bEM1ZGRkRjsnRpyPlYlpleT0XKaA+X2qlms=" />
-</div>
 
-<script type="text/javascript">
-//<![CDATA[
-var theForm = document.forms['form1'];
-if (!theForm) {
-    theForm = document.form1;
-}
-function __doPostBack(eventTarget, eventArgument) {
-    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
-        theForm.__EVENTTARGET.value = eventTarget;
-        theForm.__EVENTARGUMENT.value = eventArgument;
-        theForm.submit();
+  <div class="login-box">
+    <h2>Login</h2>
+    <input type="text" placeholder="Usuário" id="usuario">
+    <input type="password" placeholder="Senha" id="senha">
+    <button onclick="mostrarErro()">Entrar</button>
+    <div id="erro" class="mensagem-erro"></div>
+  </div>
+
+  <script>
+    function mostrarErro() {
+      const mensagem = document.getElementById('erro');
+      mensagem.textContent = 'Erro: Sistema sofrendo atualizações!';
+      mensagem.style.display = 'block';
     }
-}
-//]]>
-</script>
+  </script>
 
-
-<script src="/WebResource.axd?d=WFvfHVm4s18Szihn75wZPaCLvBmoPfaMd3mmJuXb9DNgSEiVvyvBBnCTlbC5VQFXS7dYHGzZLDewseft0XbcZmJv2yU1&amp;t=638628099619783110" type="text/javascript"></script>
-
-
-<script src="/WebResource.axd?d=FSO3pNUq8avuHZ9k5gB4V_84l0tyLq4q_5K6XaFcSDUyxo7FuGhtfBIM2udqb1RjQOANCdpsvzAjH1je_ItKFCOzKDQ1&amp;t=638628099619783110" type="text/javascript"></script>
-<div class="aspNetHidden">
-
-	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C2EE9ABB" />
-	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAVRCqbo4yY5OIrc3z1hjgAXxcn6oIDdbNQI5AQUIIyv4iLn1AyeUZQZF14sXrB8lOGZf5MUp2golT/J9ICuDcwjRaUwvhOTLLHHbglAIUbi++LSwnTYcrEAYjHr+daWd5EJyGQ3" />
-</div>
-
-        <div class="desktop">
-            <div class="overlap-group-wrapper">
-                <div class="overlap-group">
-                    <div class="frame">
-                        <div class="frame-wrapper">
-                            <div class="div">
-                                <div class="frame-2">
-                                    <div class="siap">SIAP</div>
-                                    <div class="text-wrapper">Sistema Administrativo e Pedagógico</div>
-                                </div>
-                                <div class="frame-3">
-                                    <img class="mask-group" src="img/seduc.png" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="frame-4">
-                            <div class="div-wrapper">
-                                <div class="frame-5">
-                                    <div class="rea-de-acesso-wrapper">
-                                        <div class="rea-de-acesso">ÁREA DE ACESSO</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <img class="ativo" src="img/corujasite.png" />
-                            <div class="frame-6">
-                                <div class="frame-7">
-                                    <div class="frame-8">
-                                        <div class="frame-8">
-                                            <div class="text-wrapper-2">Usuário</div>
-                                            <input name="txtLogin" type="text" id="txtLogin" class="input" />
-                                        </div>
-                                        <div class="frame-9">
-                                            <div class="frame-8">
-                                                <div class="text-wrapper-2">Senha</div>
-                                                <input name="txtSenha" type="password" id="txtSenha" class="input" />
-                                            </div>
-                                            <div id="divCaptcha" class="abaixo">
-                                                <div class="text-wrapper-2 ">Digite o código o segurança acima</div>
-                                                <input name="txtCaptcha" type="text" id="txtCaptcha" class="input" />
-                                            </div>
-                                            <p id="pEsqueceuSenha" class="esqueceu-a-senha">
-                                                <span id="spanEsqueceuSenha" class="span">Esqueceu a senha? </span>
-                                                <a
-                                                    href="https://usuarioad.educacao.go.gov.br/Esqueceu.aspx"
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"><span class="text-wrapper-3">Clique aqui.</span></a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="frame-10">
-                                        <input type="submit" name="btnLogon" value="Entrar" id="btnLogon" class="Entrar" />
-                                    </div>
-                                </div>
-                                <span id="lblMensagem" style="color:red"></span>
-
-                                <span id="lblCaptcha" style="font-weight: bold;">ugeujvlC5</span>
-
-                                <div class="frame-11">
-                                    <p class="para-d-vidas-visite">
-                                        <span class="span">Para dúvidas visite o</span>
-                                        <span class="text-wrapper-5">&nbsp;</span>
-                                        <a
-                                            href="https://portaleduca.educacao.go.gov.br/suporte-ti/"
-                                            target="_blank"
-                                            rel="noopener noreferrer"><span class="text-wrapper-6">Portal Educa</span></a>
-                                        <span class="text-wrapper-5">&nbsp;</span>
-                                        <span class="span">ou </span>
-                                        <a href="https://link.educacao.go.gov.br/atendimento" target="_blank" rel="noopener noreferrer"><span class="text-wrapper-6">contate um atendente</span></a>
-                                        <span class="text-wrapper-5">.</span>
-                                    </p>
-                                    <p class="se-inscreva-no-curso">
-                                        <a
-                                            href="https://portaleduca.educacao.go.gov.br/suporte_ti/ead-siap/"
-                                            target="_blank"
-                                            rel="noopener noreferrer"><span class="text-wrapper-7">Se inscreva no curso EAD SIAP</span></a>
-                                        <span class="text-wrapper-8">para aprender sobre o sistema.</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    
-
-<script type="text/javascript">
-//<![CDATA[
-WebForm_AutoFocus('txtLogin');//]]>
-</script>
-</form>
 </body>
 </html>
